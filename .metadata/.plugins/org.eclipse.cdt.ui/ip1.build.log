@@ -1,0 +1,27 @@
+20:41:02 **** Incremental Build of configuration Debug for project ip1 ****
+make -j2 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F401xE -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:29:2: warning: this 'while' clause does not guard... [-Wmisleading-indentation]
+  while (1);
+  ^~~~~
+../Core/Src/main.c:30:2: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'while'
+  {
+  ^
+arm-none-eabi-gcc -o "ip1.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/suman/STM32CubeIDE/workspace/ip1/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ip1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ip1.elf
+ 
+arm-none-eabi-objdump -h -S  ip1.elf  > "ip1.list"
+arm-none-eabi-objcopy  -O binary  ip1.elf  "ip1.bin"
+Finished building: ip1.bin
+ 
+arm-none-eabi-size   ip1.elf 
+Finished building: ip1.list
+ 
+   text	   data	    bss	    dec	    hex	filename
+   3836	    112	   1584	   5532	   159c	ip1.elf
+Finished building: default.size.stdout
+ 
+
+20:41:06 Build Finished. 0 errors, 1 warnings. (took 3s.834ms)
+

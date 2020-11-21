@@ -1,0 +1,10 @@
+21:12:39 **** Build of configuration Debug for project PA3INTTERRUPTS ****
+make -j2 all 
+arm-none-eabi-size   PA3INTTERRUPTS.elf 
+   text	   data	    bss	    dec	    hex	filename
+    996	     12	   1572	   2580	    a14	PA3INTTERRUPTS.elf
+Finished building: default.size.stdout
+ 
+
+21:12:40 Build Finished. 0 errors, 0 warnings. (took 1s.304ms)
+

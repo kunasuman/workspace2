@@ -1,0 +1,10 @@
+09:45:47 **** Incremental Build of configuration Debug for project BSW ****
+make -j2 all 
+arm-none-eabi-size   BSW.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4648	     20	   1572	   6240	   1860	BSW.elf
+Finished building: default.size.stdout
+ 
+
+09:45:48 Build Finished. 0 errors, 0 warnings. (took 955ms)
+

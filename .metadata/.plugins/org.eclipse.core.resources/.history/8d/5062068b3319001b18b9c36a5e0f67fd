@@ -1,0 +1,43 @@
+#include "main.h"
+
+int _write(int file, char *ptr, int len)
+{
+    int DataIdx;
+    for (DataIdx = 0; DataIdx < len; DataIdx++)
+    {
+        ITM_SendChar(*ptr++);
+    }
+    return len;
+}
+
+void DMA2_Stream0_IRQHandler()
+{
+    printf("Transfer Complete\n");
+    DMA2->LIFCR |= DMA_LIFCR_CTCIF0;
+}
+void main()
+{
+    int i = 0;
+    int a[4096];
+    int b[4096];
+    int c[4096];
+    /* Enable Clock */
+    RCC->AHB1ENR |= RCC_AHB1ENR_DMA2EN;
+    for (i = 0;i < 4096; i++)
+    {
+        a[i] = 70000 - i;
+    }
+    /* Memory to Memory Mode */
+    DMA2_Stream0->CR |= DMA_SxCR_DIR_1;
+    /* Source Data and Destination Data Size 32-bit */
+    DMA2_Stream0->CR |= DMA_SxCR_PSIZE_1 | DMA_SxCR_MSIZE_1;
+    /* Need to Increment */
+    DMA2_Stream0->CR |= DMA_SxCR_PINC|DMA_SxCR_MINC;
+    DMA2_Stream0->PAR   =  a;
+    DMA2_Stream0->M0AR  =  b;
+    DMA2_Stream0->NDTR  =  4096;
+    DMA2_Stream0->CR |= DMA_SxCR_TCIE;
+    HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
+    DMA2_Stream0->CR |= DMA_SxCR_EN;
+    while (1);
+}

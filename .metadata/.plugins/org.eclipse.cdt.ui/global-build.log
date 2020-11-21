@@ -1,0 +1,45 @@
+21:12:39 **** Build of configuration Debug for project PA3INTTERRUPTS ****
+make -j2 all 
+arm-none-eabi-size   PA3INTTERRUPTS.elf 
+   text	   data	    bss	    dec	    hex	filename
+    996	     12	   1572	   2580	    a14	PA3INTTERRUPTS.elf
+Finished building: default.size.stdout
+ 
+21:12:45 **** Build of configuration Debug for project timer1 ****
+make -j2 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F401xE -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "timer1.elf" @"objects.list"   -mcpu=cortex-m4 -T"/home/suman/STM32CubeIDE/workspace/timer1/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="timer1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: timer1.elf
+ 
+arm-none-eabi-objdump -h -S  timer1.elf  > "timer1.list"
+arm-none-eabi-objcopy  -O binary  timer1.elf  "timer1.bin"
+Finished building: timer1.bin
+ 
+arm-none-eabi-size   timer1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3876	    112	   1584	   5572	   15c4	timer1.elf
+Finished building: default.size.stdout
+ 
+Finished building: timer1.list
+ 
+21:13:58 **** Incremental Build of configuration Debug for project timer1 ****
+make -j2 all 
+arm-none-eabi-size   timer1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   3876	    112	   1584	   5572	   15c4	timer1.elf
+Finished building: default.size.stdout
+ 
+21:15:10 **** Incremental Build of configuration Debug for project DMA ****
+make -j2 all 
+arm-none-eabi-size   DMA.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4000	    112	   1584	   5696	   1640	DMA.elf
+Finished building: default.size.stdout
+ 
+21:15:13 **** Incremental Build of configuration Debug for project DMA ****
+make -j2 all 
+arm-none-eabi-size   DMA.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4000	    112	   1584	   5696	   1640	DMA.elf
+Finished building: default.size.stdout
+ 
